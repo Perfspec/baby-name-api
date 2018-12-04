@@ -26,7 +26,7 @@ public class Integration {
 	private IBabyEndpoint endpoint;
 	
 	@Test
-	public void findAccountTest() {
+	public void findBabyTest() {
 		Baby baby = new Baby(8, "Ber");
 		endpoint.create(baby);
 		assertEquals(baby.getName(), endpoint.find(baby.getId()).get().getName());

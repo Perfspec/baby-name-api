@@ -9,19 +9,30 @@ import javax.persistence.Id;
 public class Baby {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private int desiredNameLength;
+	private Integer desiredNameLength;
 	private String name;
 	
 	public Baby() {}
 	
-	public Baby(int length, String name){
-		this.desiredNameLength=length;
+	public Baby(Integer length, String name){
+		if(length > 12) {
+			this.desiredNameLength=12;
+		} else {
+			this.desiredNameLength=length;
+		}
 		this.name = name;
 	}
 	
 	public void become(Baby newBaby) {
 		this.name=newBaby.getName();
-		this.desiredNameLength=newBaby.getDesiredNameLength();
+		int newLength=newBaby.getDesiredNameLength();
+		if(newLength > 12) {
+			this.desiredNameLength=12;
+		} else if (newLength < 2) {
+			this.desiredNameLength=2;
+		} else {
+			this.desiredNameLength=newLength;
+		}
 	}
 
 	public Long getId() {
@@ -32,12 +43,18 @@ public class Baby {
 		this.id = id;
 	}
 
-	public int getDesiredNameLength() {
+	public Integer getDesiredNameLength() {
 		return desiredNameLength;
 	}
 
-	public void setDesiredNameLength(int desiredNameLength) {
-		this.desiredNameLength = desiredNameLength;
+	public void setDesiredNameLength(Integer desiredNameLength) {
+		if(desiredNameLength > 12) {
+			this.desiredNameLength=12;
+		} else if (desiredNameLength < 2) {
+			this.desiredNameLength=2;
+		} else {
+			this.desiredNameLength=desiredNameLength;
+		}
 	}
 
 	public String getName() {
