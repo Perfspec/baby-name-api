@@ -15,24 +15,13 @@ public class Baby {
 	public Baby() {}
 	
 	public Baby(Integer length, String name){
-		if(length > 12) {
-			this.desiredNameLength=12;
-		} else {
-			this.desiredNameLength=length;
-		}
+		this.desiredNameLength=length;
 		this.name = name;
 	}
 	
 	public void become(Baby newBaby) {
 		this.name=newBaby.getName();
-		int newLength=newBaby.getDesiredNameLength();
-		if(newLength > 12) {
-			this.desiredNameLength=12;
-		} else if (newLength < 2) {
-			this.desiredNameLength=2;
-		} else {
-			this.desiredNameLength=newLength;
-		}
+		this.desiredNameLength=newBaby.getDesiredNameLength();
 	}
 
 	public Long getId() {
@@ -48,13 +37,7 @@ public class Baby {
 	}
 
 	public void setDesiredNameLength(Integer desiredNameLength) {
-		if(desiredNameLength > 12) {
-			this.desiredNameLength=12;
-		} else if (desiredNameLength < 2) {
-			this.desiredNameLength=2;
-		} else {
-			this.desiredNameLength=desiredNameLength;
-		}
+		this.desiredNameLength=desiredNameLength;
 	}
 
 	public String getName() {
@@ -64,7 +47,4 @@ public class Baby {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-
 }
